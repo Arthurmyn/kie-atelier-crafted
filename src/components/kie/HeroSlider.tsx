@@ -12,7 +12,7 @@ export function HeroSlider() {
     return () => clearInterval(id);
   }, []);
 
-  const slide = heroSlides[active];
+  const slide = heroSlides[active] ?? heroSlides[0]!;
 
   return (
     <section className="mx-auto max-w-[1400px] px-4 md:px-8">
