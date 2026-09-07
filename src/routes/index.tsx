@@ -1,24 +1,62 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Header } from "@/components/kie/Header";
+import { HeroSlider } from "@/components/kie/HeroSlider";
+import { Bestsellers } from "@/components/kie/Bestsellers";
+import {
+  About,
+  AllCategories,
+  BrandMarquee,
+  Collections,
+  Divider,
+  Footer,
+  Lookbook,
+  Newsletter,
+  OnPerson,
+} from "@/components/kie/Sections";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "kie — ювелирный дом ручной работы, Астана" },
+      {
+        name: "description",
+        content:
+          "Украшения ручной работы малыми партиями: кольца, серьги, колье, браслеты. Ателье kie в Астане.",
+      },
+      { property: "og:title", content: "kie — ювелирный дом ручной работы" },
+      {
+        property: "og:description",
+        content: "Единичные экземпляры. Единственные в своём роде.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div className="min-h-screen bg-background text-foreground">
+      <Header />
+      <main>
+        <HeroSlider />
+        <Divider />
+        <BrandMarquee />
+        <Divider />
+        <Bestsellers />
+        <Divider />
+        <Collections />
+        <Divider />
+        <Lookbook />
+        <Divider />
+        <About />
+        <Divider />
+        <OnPerson />
+        <Divider />
+        <AllCategories />
+        <Divider />
+        <Newsletter />
+      </main>
+      <Footer />
     </div>
   );
 }
